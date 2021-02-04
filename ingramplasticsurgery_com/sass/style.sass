@@ -1,0 +1,734 @@
+/*
+  Theme Name: Ingram, Alton (ingramplasticsurgery.com)
+  Author: NKP Development Team
+  Description: NKP Medical responsive theme
+  Template: nkpv2
+
+@charset "UTF-8"
+
+/*---- Do Not Remove ----*/
+@import url(https://static.nkpmedical.com/unsemantic/css/nkp.min.css)
+@import url(https://use.fontawesome.com/releases/v5.8.2/css/all.css)
+@import url(https://static.nkpmedical.com/stellarnav/stellarnav.min.css)
+/*---- Do Not Remove ----*/
+
+// VARIABLES
+
+$font-stack: 'proxima-nova', sans-serif
+$font-alt: 'playfair-display', serif
+$font-third: 'neuzeit-grotesk', sans-serif
+
+$font-size: 1.6rem
+
+$primary-color: #49496c
+
+$black: #000
+$gray: #8b8b8b
+$white: #fff
+$purple: #49496c
+$blue: #22224c
+
+$small: 300px
+$medium: 768px
+$tablet: 960px
+$desktop: 1024px
+$large: 1200px
+
+@function between($from, $to, $fromWidth, $toWidth)
+  $slope: ($to - $from) / ($toWidth - $fromWidth)
+  $base: $from - $slope * $fromWidth
+
+  @return calc(#{$base} + #{100vw * $slope})
+
+@import "mixins"
+
+// STLYES
+
+html
+  scroll-behavior: smooth
+  box-sizing: border-box
+  font-size: 62.5%
+  @media only screen and (max-width: 68.75em)
+    html
+      font-size: 50%
+  @media only screen and (max-width: 37.5em)
+    html
+      font-size: 45%
+  @media only screen and (max-width: 31.25em)
+    html
+      font-size: 40%
+
+body
+  font-family: $font-stack
+  font-size: 1.8rem
+  font-weight: 400
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+// ::selection
+//   background: $primary-color
+//
+// ::-moz-selection
+//   background: $primary-color
+
+h1, h2, h3, h4, h5
+  font-family: $font-alt
+  color: $blue
+  margin: 0 0 1.5rem
+  font-weight: 700
+  line-height: 1.2
+
+#main #content
+  h1:not(:first-of-type), h2, h3, h4, h5
+    margin-top: 4rem
+
+h1
+  font-size: clamp(4.5rem, 4vw, 6rem)
+
+h2
+  font-size: clamp(4rem, 4vw, 5.2rem)
+
+h3
+  font-size: clamp(3rem, 4vw, 4.6rem)
+  font-family: $font-stack
+  font-weight: 400
+
+h4
+  font-size: 2.5rem
+
+h5
+  font-size: 2rem
+
+h6
+  font-size: 1.5rem
+
+p, q
+  padding: 1rem 0
+  line-height: 2
+
+q, cite
+  font-style: normal
+  display: block
+
+address
+  font-style: normal
+
+a
+  color: $primary-color
+  text-decoration: none
+  +transition
+  &:visited, &:link
+    color: $primary-color
+    text-decoration: none
+    +transition
+  &:hover
+    color: darken($primary-color, 20%)
+    text-decoration: none
+
+ul, ol
+  clear: both
+
+.relative
+  position: relative
+
+.fl
+  float: left
+
+.fr
+  float: right
+
+.fn
+  float: none
+  display: inline-block
+
+.tal
+  text-align: left
+
+.tar
+  text-align: right
+
+.tac
+  text-align: center
+
+.clr-l
+  clear: left
+
+.clr-r
+  clear: right
+
+.clr, .clear
+  clear: both
+
+.nodisp
+  display: none
+
+/* NKP GLOBAL STYLES
+
+img
+  border: 0px
+
+.img-resp, .img-responsive
+  max-width: 100%
+  height: auto
+
+img
+  &.left, &.alignleft
+    float: left
+    margin: 10px 15px 0px 0px
+
+.img-l
+  float: left
+  margin: 10px 15px 0px 0px
+
+img
+  &.right, &.alignright
+    float: right
+    margin: 10px 0px 0px 15px
+
+.img-r
+  float: right
+  margin: 10px 0px 0px 15px
+
+.embed
+  position: relative
+  display: block
+  height: 0px
+  padding: 0px
+  overflow: hidden
+
+.embed-responsive
+  &.embed-responsive-4x3
+    padding-bottom: 75%
+  &.embed-responsive-16x9
+    padding-bottom: 56.25%
+  .embed-item, iframe, embed, object
+    top: 0px
+    bottom: 0px
+    left: 0px
+    //width: 100%
+    border: 0px none
+
+.videoWrapper
+  position: relative
+  padding-bottom: 56.25%
+  padding-top: 25px
+  height: 0
+  iframe
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+/* desktop view bxa gallery
+
+.patient-single
+  width: 50%
+  img
+    width: 96%
+    height: auto
+
+.flex
+  +flex
+
+.flex-center
+  +flex
+  flex-direction: column
+  justify-content: center
+  height: 100%
+
+.align-center
+  +flex
+  align-items: center
+
+.btn
+  +btn
+
+.btn-2
+  background: transparent
+  color: $primary-color !important
+  &:hover, &:focus
+    background: $primary-color
+    color: $white !important
+
+.header
+  background: $white
+  position: relative
+  top: 0
+  left: 0
+  right: 0
+  z-index: 20
+  padding: 2rem 0
+  > *
+    display: -webkit-flex
+    display: -ms-flex
+    display: flex
+    align-items: center
+  &.sticky
+    position: fixed
+    top: 0
+    width: 100%
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.2)
+
+.logo
+  image-rendering: -webkit-optimize-contrast
+  image-rendering: -moz-crisp-edges
+  image-rendering: -o-crisp-edges
+  image-rendering: crisp-edges
+
+#slider
+  position: relative
+  .slides
+    > li
+      > div
+        height: 90rem
+        background-repeat: no-repeat
+        background-position: top center
+        background-size: cover
+  .slide1
+    background-image: url(images/banner-main.jpg)
+  .slider__content
+    text-align: center
+    border: 1px solid $primary-color
+    padding: 5rem
+    margin-top: 5rem
+    h1
+      font-size: clamp(4rem, 4vw, 5rem)
+      font-weight: 400
+    h3
+      font-size: clamp(2.6rem, 4vw, 3rem)
+      letter-spacing: -2px
+    p
+      font-style: italic
+      font-size: 2.1rem
+      line-height: 1.5
+    .btn
+      margin: 3rem 0
+    .logos
+      justify-content: center
+  .slider-icon
+    margin-top: -14rem
+
+#slider, #main
+  &.sticky
+    margin-top: 11.3rem
+
+.logos
+  display: -webkit-flex
+  display: -ms-flex
+  display: flex
+  align-items: center
+  li
+    margin: 1rem
+
+.social
+  font-size: 2rem
+  li
+    display: inline-block
+    margin: 0 1rem
+    &:first-of-type
+      margin-left: 0
+    a
+      padding: 1rem
+      box-sizing: border-box
+      border: 1px solid $primary-color
+      display: block
+      width: 4rem
+      height: 4rem
+      display: -webkit-flex
+      display: -ms-flex
+      display: flex
+      align-items: center
+      justify-content: center
+      &:hover, &:focus
+        background: $primary-color
+        color: $white
+
+.doctor
+  margin: 8rem 0
+  h2
+    color: #ccc
+    font-size: clamp(4rem, 4vw, 6.6rem)
+    letter-spacing: -2px
+  h3
+    letter-spacing: -2px
+  .logos
+    transform: scale(.7)
+    transform-origin: left
+    img
+      filter: grayscale(1)
+
+.procs
+  background: url(images/texture-bg.jpg) repeat center
+  background-size: cover
+  position: relative
+  padding: 5rem 0
+  margin: 80px 0
+  overflow: hidden
+  > div
+    background: rgba(221, 221, 221,.4)
+    position: relative
+    box-shadow: 1px 1.732px 15.04px 0.96px rgba(0, 0, 0, 0.3)
+
+  h2
+    font-size: clamp(3rem, 4vw, 5rem)
+    margin: 2rem 0
+    font-family: $font-third
+    text-transform: uppercase
+    font-weight: 300
+  .proc-content
+    padding: 30px 20px
+    font-size: 1.8rem
+  .btn
+    margin-top: 20px
+  .flex-direction-nav
+    .flex-nav-prev, .flex-nav-next
+      position: absolute
+      top: 0
+      z-index: 7
+      display: flex
+      align-items: center
+      height: 100%
+    .flex-nav-prev
+      left: 0
+    .flex-nav-next
+      right: 0
+    a
+      color: $white
+      background: $primary-color
+      font-size: 24px
+      box-shadow: 2.5px 4.33px 15px 0px rgba(0, 1, 1, 0.15)
+      display: block
+      width: 6.7rem
+      height: 6.7rem
+      display: flex
+      justify-content: center
+      align-items: center
+      border: 1px solid $primary-color
+      &:hover
+        color: $primary-color
+        background: transparent
+
+.procs-nav
+  margin: 0
+  padding: 0
+  position: absolute
+  right: 0
+  left: 0
+  bottom: 8rem
+  z-index: 5
+  display: flex
+  justify-content: center
+  li
+    display: inline-block
+    margin: 0 5px !important
+  a
+    max-width: 25rem
+
+.procs-nav
+  li
+    margin: 2rem auto
+    &.flex-active
+      a
+        &::after
+          opacity: 1
+  a
+    position: relative
+    display: block
+    overflow: hidden
+    margin: auto
+    &::after
+      content: ''
+      +absolute-center
+      background: rgba($white,.3)
+      opacity: 0
+      transition: all .3s ease-in-out
+    &:hover
+      &::after
+        opacity: 1
+
+.overlay
+  text-align: center
+  color: $white
+  text-transform: uppercase
+  height: 100%
+  width: 100%
+  +absolute-center
+  z-index: 1
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: flex-end
+  +cubic-bezier
+  &--name
+    font-size: 20px
+    font-weight: 300
+    margin-bottom: 2rem
+    font-family: $font-third
+
+.about
+  margin: 8rem 0
+  h2
+    font-size: clamp(4rem, 4vw ,6rem)
+    color: #ccc
+  &__content
+    border: 1px solid $blue
+    padding: 5%
+    box-sizing: border-box
+
+.reviews
+  background: url(images/texture-bg.jpg) repeat center
+  background-size: cover
+  padding: 8% 0
+  h2
+    font-size: clamp(4rem, 5vw, 7.3rem)
+    text-transform: uppercase
+    margin: 5rem 0 3rem
+    color: $primary-color
+  q
+    font-size: 2rem
+    margin-top: 1rem
+  cite
+    font-size: 2.7rem
+    font-weight: 700
+    margin-top: 2rem
+    text-transform: uppercase
+  .flex-control-nav
+    margin-top: 6rem
+    margin-left: auto
+    margin-right: auto
+    max-width: 70rem
+    padding: 1.5rem
+    display: -webkit-flex
+    display: -ms-flex
+    display: flex
+    align-items: center
+    li
+      display: -webkit-flex
+      display: -ms-flex
+      display: flex
+      align-items: center
+      margin-right: 6rem
+      position: relative
+      &::after
+        content: ''
+        width: 6rem
+        height: 2px
+        position: absolute
+        right: -6rem
+        background: rgb(52,52,52)
+      &:last-of-type
+        &::after
+          display: none
+    a
+      background: rgba(52,52,52,.5)
+      width: 2.4rem
+      height: 2.4rem
+      display: block
+      text-indent: -9999px
+      cursor: pointer
+      &.flex-active
+        background: rgba(52,52,52,1)
+
+.photos
+  background: url(images/gallery-bg.jpg) no-repeat top center
+  background-size: cover
+  padding: 9rem 0
+  text-align: center
+  h2
+    font-size: clamp(6rem, 5vw, 10rem)
+    text-transform: uppercase
+  &__content
+    background: rgba($white,.3)
+    padding: 4rem 3rem
+    border: 1px solid rgba($black,.3)
+  &__images
+    margin: 4rem 0
+    display: -webkit-flex
+    display: -ms-flex
+    display: flex
+    justify-content: center
+    > *
+      margin: 0 .75rem
+
+#main
+  padding: 6rem 0
+  #content
+    position: relative
+    .feat-img
+      float: left
+      margin: 15px
+      max-width: 100%
+      height: auto
+    .single
+      float: left
+    .pagination-wrapper
+      display: flex
+    .pagination
+      margin-bottom: 2rem
+      font-size: $font-size
+      .current
+        +circle($primary-color,$white,1px solid $primary-color)
+      a
+        +circle(transparent,$primary-color,1px solid $primary-color)
+        &:hover
+          background: $primary-color
+          color: $white
+    li
+      padding: 5px
+    ul
+      margin: 15px 0 15px 20px
+      clear: none
+    ol
+      margin: 0 0 20px 20px
+      clear: none
+  .list
+    margin: 0 !important
+    list-style: none !important
+    ul
+      margin: 0 !important
+      li
+        font-size: 1.5rem
+        margin: 0
+        padding: 0 !important
+        list-style: none
+        a
+          border-bottom: 1px solid #eee
+          padding: 1rem 1.5rem
+          display: block
+          +transition(all .25s ease-out)
+          &:hover
+            color: $white
+            background: $primary-color
+            padding-left: 3rem
+      ul
+        margin-left: 2rem !important
+
+.contact-footer
+  background: url(images/city-bg.jpg) no-repeat center
+  background-size: cover
+  padding: 12rem 0 10rem
+  color: $white
+  h2
+    text-align: center
+    color: $white
+    text-transform: uppercase
+    margin: 0
+    font-size: clamp(5rem, 5vw, 10rem)
+  .footer-form
+    margin: 10rem 0 0
+  .agreements
+    a
+      color: $white
+
+footer
+  background: url(images/texture-bg.jpg) repeat center
+  background-size: cover
+  padding: 9rem 0
+  color: $blue
+  a
+    color: $blue
+  .logo
+    margin-bottom: 4rem
+  .telephone
+    font-size: 4rem
+    font-family: $font-alt
+    font-weight: 700
+    margin: 10rem 0 1rem
+  .map
+    margin-bottom: 3rem
+
+@import "form"
+
+@import "stellarnav"
+
+.post-divider
+  padding: 2rem 0
+  border-bottom: 1px solid #ccc
+
+#patient-listing-sidebar ul
+  margin: 0 !important
+  li ul
+    margin: 0 !important
+
+/*--- GALLERY RESPONSIVE DESKTOP
+
+.patient-content, .patient-listing
+  width: 48% !important
+  float: left
+
+.patient-list-image
+  width: 90%
+
+.patient-listing > div
+  width: 50%
+  float: left
+
+/*---- START MEDIA QUERIES ----
+@media only screen and (max-width: 767px)
+  /* GALLERY RESPONSIVE NON-DESKTOP
+  #patient-listing
+    .patient-content
+      width: 100% !important
+    .patient-listing
+      width: 100% !important
+      > div
+        width: 50%
+  .patient-entry .patient-single
+    width: 100%
+  iframe
+    width: 100%
+  .patient-single
+    width: 100% !important
+  .header
+    padding-bottom: 0
+    > div
+      flex-direction: column
+      padding: 0
+    .logo
+      margin-bottom: 2rem
+    &.sticky
+      position: relative
+      box-shadow: none
+  #slider, #main
+    &.sticky
+      margin: 0
+  #slider
+    .slides
+      > li
+        > div
+          height: 85rem
+          background-position: top left
+    .slider__content
+      padding: 2rem
+      margin-top: 10rem
+      p
+        font-size: 1.8rem
+  .photos
+    background: url(images/gallery-bg-mobile.jpg) no-repeat center
+    background-size: cover
+    &__content
+      padding: 2rem
+    &__images
+      margin: 0
+      transform: scale(.75)
+  .m-block
+    display: block
+  .contact-footer
+    padding: 7rem 0 5rem
+    .footer-form
+      margin: 5rem 0 0
+  .contact-form
+    .agreement
+      margin-top: 0
+
+/*MOBILE
+
+@media only screen and (max-width: 960px) and (min-width: 768px)
+
+/*TABLET
+
+@media only screen and (max-width: 1024px) and (min-width: 960px)
+
+/*960 DESKTOP
+/*---- END MEDIA QUERIES ----

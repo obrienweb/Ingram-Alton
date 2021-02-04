@@ -1,0 +1,148 @@
+.stellarnav
+  font-family: $font-third
+  background: none
+  +transition
+  a
+    color: $black !important
+    &::after
+      background: none
+  ul
+    font-size: 2rem
+    text-transform: uppercase
+    ul
+      font-size: 1.7rem
+      text-transform: capitalize
+
+.stellarnav.desktop
+  > ul
+    > li
+      +transition
+      &:hover, &.current-menu-item
+        > a
+          box-shadow: inset 0 -3px 0 $white
+    ul
+      width: 250px
+      ul
+        left: 250px
+
+.stellarnav.desktop
+  ul
+    ul
+      box-sizing: border-box
+      background: $white
+      line-height: 20px
+      box-shadow: 0px 9px 10px 0px rgba(0, 0, 0, 0.15)
+      li
+        &:first-child
+          padding-top: 11px
+        &:last-child
+          padding-bottom: 11px
+      >li
+        &:hover
+          >a
+            background: $primary-color
+            color: $white !important
+        a
+          padding: 10px 14px
+          margin: 0 11px
+          color: #222222 !important
+
+.stellarnav>ul>li.has-sub>a:after
+  margin: 0
+  display: none
+
+.stellarnav li li.has-sub>a:after
+  float: right
+
+.stellarnav.mobile>ul>li>a
+  padding: 15px !important
+
+// .stellarnav li.open>a.dd-toggle
+//   i
+//     transform: rotate(0deg)
+//   .fa-plus
+//     &::before
+//       content: '\f106'
+//
+// .stellarnav li.open>a.dd-toggle
+//   i
+//     transform: rotate(0deg)
+//   .fa-plus
+//     &::before
+//       content: '\f106'
+
+.stellarnav.mobile
+  .dd-toggle
+    padding: 15px !important
+    height: 51px
+    font-size: 15px
+    .fa-plus:before
+      content: '\f107'
+  > ul
+    > li
+      border-bottom: 1px solid rgba($black,.05)
+  ul
+    background: $white
+    border-top: 0 !important
+    z-index: 20
+    li
+      &.open, .current-menu-item, &:hover, &:focus
+        background: $primary-color
+        a
+          color: $white !important
+      a
+        color: $black !important
+        font-size: 16px
+        border-bottom: 0 !important
+        padding: 15px 0 15px 15px !important
+        font-weight: 400
+        //color: #6d6d6d !important
+        &:hover, &:focus
+          color: $primary-color
+      ul
+        background: transparent !important
+        .dd-toggle
+          height: 39px
+          border: 0 !important
+        li
+          padding-left: 20px !important
+          a
+            font-size: 15px
+            border-bottom: 1px solid rgba($white,.15) !important
+            text-transform: capitalize
+            padding: 10px 0 10px 15px !important
+
+.stellarnav.mobile .call-btn-mobile, .stellarnav.mobile .location-btn-mobile, .stellarnav.mobile .menu-toggle
+  padding-top: 20px
+  padding-bottom: 20px
+  &:hover
+    background: $primary-color
+    color: $white !important
+
+.stellarnav.active
+  .menu-toggle
+    background: $white
+    color: $black !important
+
+.stellarnav.mobile.active .fa-bars::before
+  content: "\f00d"!important
+
+.stellarnav.mobile .close-menu
+  width: 100%
+
+//---padding between menu links
+.stellarnav>ul>li>a
+  font-weight: 300
+  padding-top: 25px
+  padding-bottom: 25px
+  padding-left: 8px
+  padding-right: 8px
+  font-size: 18px
+  @media (min-width: $tablet)
+    padding-left: between(8px, 30px, $tablet, $large)
+    padding-right: between(8px, 30px, $tablet, $large)
+    font-size: between(18px, 20px, $tablet, $large)
+  @media (min-width: $large)
+    padding-left: 30px
+    padding-right: 30px
+    font-size: 20px

@@ -1,0 +1,160 @@
+// MIXINS
+
+$px14: 0.875em
+$px15: 0.9375em
+$px16: 1em
+$px17: 10.625em
+$px18: 1.125em
+$px19: 1.1875em
+$px20: 1.25em
+$px21: 1.3125em
+$px22: 1.375em
+$px23: 1.4375em
+$px24: 1.5em
+$px25: 1.5625em
+$px26: 1.625em
+$px27: 1.6875em
+$px28: 1.75em
+$px29: 1.8125em
+$px30: 1.875em
+
+=absolute-center()
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+
+=cubic-bezier()
+  transition: .5s all cubic-bezier(0.68, -0.55, 0.265, 1.55)
+
+=transition ($transition: all .5s ease-out)
+  -webkit-transition: $transition
+  -moz-transition: $transition
+  -ms-transition: $transition
+  transition: $transition
+
+=transform($transform)
+  -webkit-transform: $transform
+  -moz-transform: $transform
+  -ms-transform: $transform
+  transform: $transform
+
+=animation($animation)
+  -webkit-animation: $animation
+  -moz-animation: $animation
+  -ms-animation: $animation
+  animation: $animation
+
+=border-radius($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  -ms-border-radius: $radius
+  border-radius: $radius
+
+=box-shadow($box-shadow)
+  -webkit-box-shadow: $box-shadow
+  -moz-box-shadow: $box-shadow
+  box-shadow: $box-shadow
+
+=box-sizing($border-box: border-box)
+  -webkit-box-sizing: $border-box
+  -moz-box-sizing: $border-box
+  box-sizing: $border-box
+
+=flex()
+  display: -webkit-box
+  display: -moz-box
+  display: -ms-flexbox
+  display: -webkit-flex
+  display: flex
+
+=flex-center()
+  +flex
+  flex-direction: column
+  justify-content: center
+  height: 100%
+
+=input-placeholder
+  &.placeholder
+    @content
+  &:-moz-placeholder
+    @content
+  &::-moz-placeholder
+    @content
+  &:-ms-input-placeholder
+    @content
+  &::-webkit-input-placeholder
+    @content
+
+=form()
+  color: $black
+  background: $white
+  font-family: $font-stack
+  font-size: 1.5rem
+  +box-sizing
+  width: 100%
+  margin: 0 0 10px
+  padding: 12px
+  border: 1px solid #ccc
+
+=form-2()
+  color: $white
+  background: rgba($white,.2)
+  font-family: $font-alt
+  font-size: 2rem
+  font-weight: 700
+  +box-sizing
+  width: 100%
+  margin: 0 0 2rem
+  padding: 16px
+  border: 1px solid transparent
+  outline: 1px solid transparent
+  &:hover, &:focus
+    border-color: $white
+    outline-color: $white
+
+=btn()
+  background: $primary-color
+  color: $white !important
+  padding: 2rem 1rem
+  margin: 15px auto
+  height: auto
+  width: 100%
+  max-width: 33rem
+  text-align: center
+  font-size: 2rem
+  font-family: $font-third
+  font-weight: 300
+  font-style: normal
+  text-transform: uppercase
+  display: inline-block
+  +box-sizing
+  cursor: pointer
+  clear: both
+  border: 1px solid $primary-color
+  transform: perspective(1px) translateZ(0px)
+  &:hover, &:focus
+    background: transparent
+    color: $primary-color !important
+
+=circle($background,$color,$border)
+  background: $background
+  color: $color
+  margin: 4px
+  width: 40px
+  height: 40px
+  display: flex
+  align-items: center
+  justify-content: center
+  box-sizing: border-box
+  text-align: center
+  border: $border
+  +border-radius(50%)
+
+=slider-nav($content, $color)
+  content: $content
+  color: $color
+  font-size: 1.75em
+  font-family: FontAwesome
+  +transition

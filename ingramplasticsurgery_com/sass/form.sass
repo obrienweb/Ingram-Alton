@@ -1,0 +1,89 @@
+/* FORM
+
+input, select, textarea
+  +transition
+
+.footer-form
+  input
+    &[type="text"], &[type="email"], &[type="tel"], &[type="url"]
+      +form-2
+  input[type="submit"]
+    +btn
+    background: transparent
+    color: $white !important
+    border-color: $white
+    &:hover, &:focus
+      background: $primary-color
+      color: $white !important
+      border-color: $primary-color
+  textarea
+    +form-2
+    margin-bottom: 5px
+    height: 230px
+    resize: vertical
+  input[type="checkbox" i]
+    width: 2rem
+    height: 2rem
+    margin: 0
+
+.contact-form
+  input
+    &[type="text"], &[type="email"], &[type="tel"], &[type="url"]
+      +form
+  input[type="submit"]
+    +btn
+  textarea
+    +form
+    height: 230px
+    resize: vertical
+  select
+    +form
+    margin-bottom: 10px
+
+input, textarea
+  +input-placeholder
+    color: rgba($white,.75)
+    text-transform: uppercase
+
+.footer-form input[type="submit"][disabled], .contact-form input[type="submit"][disabled]
+  opacity: 0.7
+  cursor: not-allowed
+  &:hover
+    opacity: 0.7
+    cursor: not-allowed
+
+.footer-form input.wpcf7-captchar, .contact-form input.wpcf7-captchar
+  width: 100%
+
+.wpcf7-form-control-wrap
+  //display: block !important
+  &.agree
+    display: inline-block !important
+    width: 3rem
+
+.agreements
+  font-weight: 400
+  margin: 15px 0
+  display: -webkit-flex
+  display: -ms-flex
+  display: flex
+  align-items: center
+
+.wpcf7-not-valid-tip
+  font-size: 10px !important
+  margin: -7px 0 10px 5px
+
+.wpcf7-validation-errors
+  border: 0 !important
+  text-align: center
+  font-size: 11px
+  color: #f00
+
+.ajax-loader
+  position: absolute
+  margin-top: -40px
+
+span.wpcf7-list-item
+  margin: 0 !important
+
+/* END FORM
