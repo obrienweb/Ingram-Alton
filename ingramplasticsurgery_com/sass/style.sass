@@ -309,9 +309,16 @@ img
   .slider-icon
     margin-top: -14rem
 
-#slider, #main
+#slider, .banner-internal
   &.sticky
     margin-top: 11.3rem
+
+.banner-internal
+  background-image: url(images/banner-main.jpg)
+  background-position: top center
+  background-repeat: no-repeat
+  background-size: cover
+  height: 40vh
 
 .logos
   display: -webkit-flex
@@ -346,6 +353,48 @@ img
 
 .doctor
   margin: 8rem 0
+  .grid-container
+    max-width: 133rem
+    display: -webkit-flex
+    display: -ms-flex
+    display: flex
+    align-items: center
+  &__image
+    position: relative
+    z-index: 1
+    > *
+      max-width: 53.2rem
+      margin: auto
+      position: relative
+      &::before, &::after
+        content: ''
+        background: $primary-color
+        width: 34.5rem
+        height: 50.5rem
+        position: absolute
+        z-index: -1
+      &::before
+        margin: -4rem 0 0 -4rem
+      &::after
+        bottom: -4rem
+        right: -4rem
+  &__content
+    padding: 3rem
+    box-sizing: border-box
+    font-size: 1.7rem
+    > div
+      position: relative
+      &::before
+        content: ''
+        border: 1px solid $blue
+        width: 115%
+        height: 110%
+        position: absolute
+        top: -7rem
+        left: -9rem
+        right: 0
+        bottom: 0
+        padding: 5%
   h2
     color: #ccc
     font-size: clamp(4rem, 4vw, 6.6rem)
@@ -369,7 +418,6 @@ img
     background: rgba(221, 221, 221,.4)
     position: relative
     box-shadow: 1px 1.732px 15.04px 0.96px rgba(0, 0, 0, 0.3)
-
   h2
     font-size: clamp(3rem, 4vw, 5rem)
     margin: 2rem 0
@@ -416,36 +464,35 @@ img
   right: 0
   left: 0
   bottom: 8rem
-  z-index: 5
+  z-index: 15
   display: flex
   justify-content: center
   li
     display: inline-block
     margin: 0 5px !important
-  a
-    max-width: 25rem
-
-.procs-nav
-  li
-    margin: 2rem auto
     &.flex-active
       a
-        &::after
-          opacity: 1
+        box-shadow: 1px 1.732px 15.04px 0.96px rgba(0, 0, 0, 0.32)
+        .overlay
+          background: rgba($white,.3)
+          color: $black
+        img
+          transform: scale(1.1)
   a
     position: relative
     display: block
     overflow: hidden
     margin: auto
-    &::after
-      content: ''
-      +absolute-center
-      background: rgba($white,.3)
-      opacity: 0
-      transition: all .3s ease-in-out
+    max-width: 25rem
+    box-shadow: 1px 1.732px 15.04px 0.96px rgba(0, 0, 0, 0)
+    img
+      transition: transform .3s ease-out
     &:hover
-      &::after
-        opacity: 1
+      .overlay
+        background: rgba($white,.3)
+        color: $black
+      img
+        transform: scale(1.1)
 
 .overlay
   text-align: center
@@ -459,31 +506,59 @@ img
   flex-direction: column
   align-items: center
   justify-content: flex-end
-  +cubic-bezier
+  transition: all .4s ease-out
+  background: rgba($blue,.7)
   &--name
     font-size: 20px
-    font-weight: 300
+    font-weight: 400
     margin-bottom: 2rem
     font-family: $font-third
 
 .about
   margin: 8rem 0
+  .grid-container
+    max-width: 133rem
+    display: -webkit-flex
+    display: -ms-flex
+    display: flex
+    align-items: center
   h2
     font-size: clamp(4rem, 4vw ,6rem)
     color: #ccc
+  h3
+    border-bottom: 1px solid $primary-color
+    padding-bottom: 2rem
+  &__image
+    text-align: center
+    position: relative
+    z-index: 1
   &__content
-    border: 1px solid $blue
-    padding: 5%
+    padding: 3rem
     box-sizing: border-box
+    > div
+      position: relative
+      &::before
+        content: ''
+        border: 1px solid $blue
+        width: 115%
+        height: 115%
+        position: absolute
+        top: -7rem
+        left: -9rem
+        right: 0
+        bottom: 0
+        padding: 5%
+
 
 .reviews
   background: url(images/texture-bg.jpg) repeat center
   background-size: cover
   padding: 8% 0
+  overflow: hidden
   h2
     font-size: clamp(4rem, 5vw, 7.3rem)
     text-transform: uppercase
-    margin: 5rem 0 3rem
+    margin: 4rem 0 3rem
     color: $primary-color
   q
     font-size: 2rem
@@ -493,6 +568,19 @@ img
     font-weight: 700
     margin-top: 2rem
     text-transform: uppercase
+  .quote
+    color: rgba($blue,.4)
+    font-family: $font-alt
+    font-size: 40rem
+    line-height: 0
+    user-select: none
+    position: absolute
+    &.first
+      margin-top: 17rem
+    &.last
+      transform: scale(-1, -1)
+      margin-top: 10rem
+      right: 0
   .flex-control-nav
     margin-top: 6rem
     margin-left: auto
@@ -628,6 +716,8 @@ footer
   color: $blue
   a
     color: $blue
+    &:hover, &:focus
+      color: $black
   .logo
     margin-bottom: 4rem
   .telephone
@@ -637,6 +727,8 @@ footer
     margin: 10rem 0 1rem
   .map
     margin-bottom: 3rem
+  address
+    margin-top: 2rem
 
 @import "form"
 
@@ -690,7 +782,7 @@ footer
     &.sticky
       position: relative
       box-shadow: none
-  #slider, #main
+  #slider, .banner-internal
     &.sticky
       margin: 0
   #slider
@@ -704,6 +796,24 @@ footer
       margin-top: 10rem
       p
         font-size: 1.8rem
+  .banner-internal
+    background-position-x: 55%
+  .doctor
+    .grid-container
+      display: block
+    &__image
+      margin-bottom: 7rem
+      > *
+        &::before, &::after
+          width: 25rem
+          height: 40rem
+        &::before
+          margin: -2.5rem 0 0 -2.5rem
+        &::after
+          bottom: -2.5rem
+          right: -2.5rem
+    .logos
+      transform: scale(1)
   .photos
     background: url(images/gallery-bg-mobile.jpg) no-repeat center
     background-size: cover
@@ -712,23 +822,184 @@ footer
     &__images
       margin: 0
       transform: scale(.75)
+  .procs-nav
+    position: relative
+    flex-flow: row wrap
+    bottom: 0
+    margin-top: 2rem
+    li
+      width: 45%
+      margin: 5px !important
+  .procs .flex-direction-nav .flex-nav-prev, .procs .flex-direction-nav .flex-nav-next
+    margin-top: 50%
+    height: auto
+  .doctor
+    &__content
+      border: 1px solid $primary-color
+      padding: 2rem
+      > div
+        &::before
+          display: none
+  .about
+    .grid-container
+      display: block
+    &__image
+      margin-bottom: 5rem
+    &__content
+      border: 1px solid $primary-color
+      padding: 2rem
+      > div
+        &::before
+          display: none
+  .reviews
+    padding: 5rem 2rem
   .m-block
     display: block
   .contact-footer
     padding: 7rem 0 5rem
     .footer-form
       margin: 5rem 0 0
+      input
+        &[type="text"], &[type="email"], &[type="tel"], &[type="url"]
+        font-size: 1.8rem
+      textarea
+        font-size: 1.8rem
   .contact-form
     .agreement
       margin-top: 0
+  footer
+    .telephone
+      margin: 5rem 0 1rem
+    .map
+      margin-top: 5rem
 
 /*MOBILE
 
 @media only screen and (max-width: 960px) and (min-width: 768px)
+  .header
+    padding-bottom: 0
+    > div
+      flex-direction: column
+      padding: 0
+    .logo
+      margin-bottom: 2rem
+    &.sticky
+      position: relative
+      box-shadow: none
+  #slider, .banner-internal
+    &.sticky
+      margin: 0
+  #slider
+    .slider__content
+      padding: 3rem
+    .slide1
+      background-position-x: 56% !important
+  .doctor
+    .grid-container
+      display: block
+    .tablet-50
+      width: 100%
+    &__image
+      margin-bottom: 10rem
+  .doctor
+    &__content
+      border: 1px solid $primary-color
+      padding: 2rem
+      > div
+        &::before
+          display: none
+  .about
+    .grid-container
+      display: block
+    .tablet-50
+      width: 100%
+    &__image
+      margin-bottom: 5rem
+    &__content
+      border: 1px solid $primary-color
+      padding: 5rem
+      > div
+        &::before
+          display: none
+  .procs-nav
+    position: relative
+    flex-flow: row wrap
+    bottom: 0
+    margin-top: 5rem
+    li
+      width: 30%
+      margin: 5px !important
+  .reviews .flex-control-nav
+    max-width: 58rem
+  .photos
+    padding: 7rem 0
+    background-position-x: 52%
+    &__images
+      margin: 2rem 0
+    .tablet-50
+      width: 60%
+  .contact-footer
+    padding: 10rem 0 8rem
+    .footer-form
+      margin: 8rem 0 0
+      input
+        &[type="text"], &[type="email"], &[type="tel"], &[type="url"]
+        font-size: 1.8rem
+      textarea
+        font-size: 1.8rem
 
 /*TABLET
 
 @media only screen and (max-width: 1024px) and (min-width: 960px)
+  #slider
+    .slide1
+      background-position-x: 55% !important
+  .procs-nav
+    position: relative
+    flex-flow: row wrap
+    bottom: 0
+    margin-top: 5rem
+    li
+      width: 30%
+      margin: 5px !important
+  .reviews .flex-control-nav
+    max-width: 78rem
+  .photos
+    background-position-x: 55%
+  .about__content > div::before
+    left: -7rem
 
 /*960 DESKTOP
+
+@media only screen and (max-width: 1300px) and (min-width: 961px)
+  .doctor
+    &__image
+      > *
+        &::before, &::after
+        &::before
+          margin: -2rem 0 0 -2rem
+        &::after
+          bottom: -2rem
+          right: -2rem
+
+
+//@media only screen and (max-width: 1300px) and (min-width: 1025px)
+  .about
+    &__content
+      > div
+        &::before
+          top: -9rem
+
+
+//@media only screen and (max-width: 1400px) and (min-width: 1025px)
+  .about
+    &__content
+      > div
+        &::before
+          width: 120%
+          height: 120%
+          top: -9rem
+          left: -11.5rem
+          padding: 5%
+
 /*---- END MEDIA QUERIES ----
