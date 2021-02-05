@@ -1010,14 +1010,19 @@ input, select, textarea {
   color: #000;
   background: #fff;
   font-family: "proxima-nova", sans-serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
   margin: 0 0 10px;
-  padding: 12px;
+  padding: 15px;
   border: 1px solid #ccc;
+  outline: 1px solid transparent;
+}
+.contact-form input[type=text]:hover, .contact-form input[type=text]:focus, .contact-form input[type=email]:hover, .contact-form input[type=email]:focus, .contact-form input[type=tel]:hover, .contact-form input[type=tel]:focus, .contact-form input[type=url]:hover, .contact-form input[type=url]:focus {
+  border-color: #49496c;
+  outline-color: #49496c;
 }
 .contact-form input[type=submit] {
   background: #49496c;
@@ -1050,30 +1055,55 @@ input, select, textarea {
   color: #000;
   background: #fff;
   font-family: "proxima-nova", sans-serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
   margin: 0 0 10px;
-  padding: 12px;
+  padding: 15px;
   border: 1px solid #ccc;
+  outline: 1px solid transparent;
   height: 230px;
   resize: vertical;
+}
+.contact-form textarea:hover, .contact-form textarea:focus {
+  border-color: #49496c;
+  outline-color: #49496c;
 }
 .contact-form select {
   color: #000;
   background: #fff;
   font-family: "proxima-nova", sans-serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
   margin: 0 0 10px;
-  padding: 12px;
+  padding: 15px;
   border: 1px solid #ccc;
+  outline: 1px solid transparent;
   margin-bottom: 10px;
+}
+.contact-form select:hover, .contact-form select:focus {
+  border-color: #49496c;
+  outline-color: #49496c;
+}
+.contact-form input.placeholder, .contact-form textarea.placeholder {
+  color: rgba(0, 0, 0, 0.75);
+}
+.contact-form input:-moz-placeholder, .contact-form textarea:-moz-placeholder {
+  color: rgba(0, 0, 0, 0.75);
+}
+.contact-form input::-moz-placeholder, .contact-form textarea::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.75);
+}
+.contact-form input:-ms-input-placeholder, .contact-form textarea:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.75);
+}
+.contact-form input::-webkit-input-placeholder, .contact-form textarea::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.75);
 }
 
 input.placeholder, textarea.placeholder {
@@ -1500,7 +1530,7 @@ span.wpcf7-list-item {
   .contact-footer .footer-form {
     margin: 5rem 0 0;
   }
-  .contact-footer .footer-form input {
+  .contact-footer .footer-form input[type=text], .contact-footer .footer-form input[type=email], .contact-footer .footer-form input[type=tel], .contact-footer .footer-form input[type=url] {
     font-size: 1.8rem;
   }
   .contact-footer .footer-form textarea {
@@ -1613,7 +1643,7 @@ span.wpcf7-list-item {
   .contact-footer .footer-form {
     margin: 8rem 0 0;
   }
-  .contact-footer .footer-form input {
+  .contact-footer .footer-form input[type=text], .contact-footer .footer-form input[type=email], .contact-footer .footer-form input[type=tel], .contact-footer .footer-form input[type=url] {
     font-size: 1.8rem;
   }
   .contact-footer .footer-form textarea {

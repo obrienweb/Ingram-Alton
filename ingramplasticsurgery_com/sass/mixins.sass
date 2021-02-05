@@ -91,12 +91,16 @@ $px30: 1.875em
   color: $black
   background: $white
   font-family: $font-stack
-  font-size: 1.5rem
+  font-size: 2rem
   +box-sizing
   width: 100%
   margin: 0 0 10px
-  padding: 12px
+  padding: 15px
   border: 1px solid #ccc
+  outline: 1px solid transparent
+  &:hover, &:focus
+    border-color: $primary-color
+    outline-color: $primary-color
 
 =form-2()
   color: $white
